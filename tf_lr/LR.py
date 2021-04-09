@@ -46,8 +46,8 @@ import datetime
 import os
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
 
-print (tf.__version__)
-print (tf.__path__)
+print(tf.__version__)
+print(tf.__path__)
 
 
 
