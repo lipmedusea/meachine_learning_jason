@@ -1,0 +1,229 @@
+C:\Users\jasyan\Anaconda3\python.exe C:/Users/jasyan/project/meachine_learning_yf/main_drumping.py
+正/负 119997/4012113
+33.43511087777195 33.107387536112256
+Index(['is_festival_user', 'is_LAST_2YEAR_DD_ACTIVE',
+       'cafe_tag_is_mop_available', 'IS_SR_KIT_USER', 'level_use', 'skr_rate',
+       'merch_rate', 'active_index', 'cafe_tag_p6m_food_qty', 'DD_rev',
+       'svc_revenue', 'SR_KIT_NUM', 'cafe_tag_p3m_merch_party_size',
+       'CAFE20_VISIT_MERCH', 'CAFE20_AMT', 'cafe_tag_p3m_food_qty',
+       'p3m_weekday_trans', 'max_DD_rev', 'DD_end_gap', 'MC_end_gap',
+       'p2w_amt', 'cafe_tag_p6m_merch_qty', 'MCoffer_red', 'p2w_trans',
+       'CAFE20_RECENCY_SRKIT', 'target_is_DD_ACTIVE'],
+      dtype='object')
+x_train (2892477, 25)
+-------------------adaboost-------------------------
+================训练集================
+              precision    recall  f1-score   support
+
+           0       0.98      0.97      0.98   2808730
+           1       0.19      0.20      0.20     83747
+
+    accuracy                           0.95   2892477
+   macro avg       0.58      0.59      0.59   2892477
+weighted avg       0.95      0.95      0.95   2892477
+
+[[2735232   73498]
+ [  66690   17057]]
+AUC=0.5887526344107423
+================测试集================
+              precision    recall  f1-score   support
+
+           0       0.98      0.97      0.97   1203383
+           1       0.19      0.20      0.19     36250
+
+    accuracy                           0.95   1239633
+   macro avg       0.58      0.59      0.58   1239633
+weighted avg       0.95      0.95      0.95   1239633
+
+[[1171896   31487]
+ [  28938    7312]]
+AUC=0.5877724713950817
+===========b_test===================
+              precision    recall  f1-score   support
+
+           0       0.98      0.97      0.97    401096
+           1       0.19      0.21      0.20     12115
+
+    accuracy                           0.95    413211
+   macro avg       0.58      0.59      0.59    413211
+weighted avg       0.95      0.95      0.95    413211
+
+[[390555  10541]
+ [  9613   2502]]
+AUC=0.5901201752390361
+================Importance================
+                         features  importance
+4                       level_use       0.217
+0                is_festival_user       0.130
+7                    active_index       0.130
+23                      p2w_trans       0.087
+13             CAFE20_VISIT_MERCH       0.087
+14                     CAFE20_AMT       0.087
+17                     max_DD_rev       0.087
+16              p3m_weekday_trans       0.043
+3                  IS_SR_KIT_USER       0.043
+6                      merch_rate       0.043
+8           cafe_tag_p6m_food_qty       0.043
+22                    MCoffer_red       0.000
+21         cafe_tag_p6m_merch_qty       0.000
+20                        p2w_amt       0.000
+19                     MC_end_gap       0.000
+18                     DD_end_gap       0.000
+12  cafe_tag_p3m_merch_party_size       0.000
+15          cafe_tag_p3m_food_qty       0.000
+1         is_LAST_2YEAR_DD_ACTIVE       0.000
+11                     SR_KIT_NUM       0.000
+10                    svc_revenue       0.000
+9                          DD_rev       0.000
+5                        skr_rate       0.000
+2       cafe_tag_is_mop_available       0.000
+24           CAFE20_RECENCY_SRKIT       0.000
+-------------------LR-------------------------
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+C:\Users\jasyan\Anaconda3\lib\site-packages\sklearn\svm\_base.py:985: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn("Liblinear failed to converge, increase "
+================训练集================
+              precision    recall  f1-score   support
+
+           0       0.98      0.98      0.98   2808730
+           1       0.21      0.23      0.22     83747
+
+    accuracy                           0.95   2892477
+   macro avg       0.60      0.60      0.60   2892477
+weighted avg       0.95      0.95      0.95   2892477
+
+[[2739768   68962]
+ [  64867   18880]]
+AUC=0.6004440887591944
+================测试集================
+              precision    recall  f1-score   support
+
+           0       0.98      0.98      0.98   1203383
+           1       0.21      0.22      0.22     36250
+
+    accuracy                           0.95   1239633
+   macro avg       0.59      0.60      0.60   1239633
+weighted avg       0.95      0.95      0.95   1239633
+
+[[1173600   29783]
+ [  28176    8074]]
+AUC=0.5989908202413387
+===========b_test===================
+              precision    recall  f1-score   support
+
+           0       0.98      0.98      0.98    401096
+           1       0.22      0.23      0.23     12115
+
+    accuracy                           0.95    413211
+   macro avg       0.60      0.60      0.60    413211
+weighted avg       0.95      0.95      0.95    413211
+
+[[391198   9898]
+ [  9295   2820]]
+AUC=0.6040459551476911
+-------------------Rf-------------------------
+{'criterion': 'gini', 'max_depth': 6, 'max_features': 8, 'n_estimators': 23}
+================训练集================
+              precision    recall  f1-score   support
+
+           0       0.98      0.96      0.97   2808730
+           1       0.19      0.28      0.23     83747
+
+    accuracy                           0.95   2892477
+   macro avg       0.59      0.62      0.60   2892477
+weighted avg       0.96      0.95      0.95   2892477
+
+[[2710113   98617]
+ [  59975   23772]]
+AUC=0.6243720288214205
+================测试集================
+              precision    recall  f1-score   support
+
+           0       0.98      0.96      0.97   1203383
+           1       0.19      0.28      0.23     36250
+
+    accuracy                           0.94   1239633
+   macro avg       0.58      0.62      0.60   1239633
+weighted avg       0.95      0.94      0.95   1239633
+
+[[1161023   42360]
+ [  26186   10064]]
+AUC=0.6212134115125499
+===========b_test===================
+              precision    recall  f1-score   support
+
+           0       0.98      0.96      0.97    401096
+           1       0.20      0.29      0.23     12115
+
+    accuracy                           0.94    413211
+   macro avg       0.59      0.63      0.60    413211
+weighted avg       0.96      0.94      0.95    413211
+
+[[387028  14068]
+ [  8659   3456]]
+AUC=0.6250961507030784
+================Importance================
+                         features  importance
+4                       level_use       0.240
+16              p3m_weekday_trans       0.113
+14                     CAFE20_AMT       0.085
+8           cafe_tag_p6m_food_qty       0.066
+9                          DD_rev       0.059
+13             CAFE20_VISIT_MERCH       0.054
+6                      merch_rate       0.047
+0                is_festival_user       0.042
+17                     max_DD_rev       0.038
+7                    active_index       0.030
+18                     DD_end_gap       0.028
+20                        p2w_amt       0.026
+19                     MC_end_gap       0.025
+21         cafe_tag_p6m_merch_qty       0.023
+23                      p2w_trans       0.019
+11                     SR_KIT_NUM       0.017
+3                  IS_SR_KIT_USER       0.015
+12  cafe_tag_p3m_merch_party_size       0.015
+15          cafe_tag_p3m_food_qty       0.013
+5                        skr_rate       0.013
+10                    svc_revenue       0.013
+24           CAFE20_RECENCY_SRKIT       0.007
+22                    MCoffer_red       0.006
+2       cafe_tag_is_mop_available       0.003
+1         is_LAST_2YEAR_DD_ACTIVE       0.002
+
