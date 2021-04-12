@@ -22,7 +22,8 @@ if __name__ == '__main__':
     warnings.filterwarnings('ignore')
     # 加载数据
     sql = "SELECT * from bidata.trail_pigeon_wdf1"
-    df = load_data_new(sql, filename="FY20_DD_modeling_partiton_sample.csv")
+    df = load_data_new(sql, filename="drumping.csv")
+    df_btest = load_data_new(sql, filename="btest.csv")
 
     label_by_contract = "target_is_DD_ACTIVE"
     labels = label_by_contract
@@ -161,9 +162,9 @@ if __name__ == '__main__':
         'cafe_tag_is_mop_available',
         'IS_SR_KIT_USER']
 
-
     #  数据预处理
-    df_train, df_btest = data_clean2(df)
+    df_train = data_clean2(df)
+    df_btest = data_clean2(df_btest)
     df_train = df_train[select_columns]
     df_btest = df_btest[select_columns]
 
@@ -184,9 +185,8 @@ if __name__ == '__main__':
     print(t, v)
 
     # #划分训练测试集
-    X_train_tra, X_test_tra, df_btest= data_seperate(df_train, df_btest, size=0.3, label=labels, cri=None,
+    X_train_tra, X_test_tra, df_btest = data_seperate(df_train, df_btest, size=0.3, label=labels, cri=None,
                                                      undeal_column=None)
-
     # # 划分label
     print(df_train.columns)
 
@@ -203,12 +203,12 @@ if __name__ == '__main__':
 
     # #模型训练
     # adaboost模型
-    # adaboost_model(x_train, x_test, y_train, y_test, df_btest.drop(labels, axis=1), df_btest[labels])
+    adaboost_model(x_train, x_test, y_train, y_test, df_btest.drop(labels, axis=1), df_btest[labels])
 
     #  LR模型
-    # lr_model(x_train, x_test, y_train, y_test, df_btest.drop(labels, axis=1), df_btest[labels])
+    lr_model(x_train, x_test, y_train, y_test, df_btest.drop(labels, axis=1), df_btest[labels])
     # # rf模型
-    # rf_mdoel(x_train, x_test, y_train, y_test, df_btest.drop(labels, axis=1), df_btest[labels])
+    rf_mdoel(x_train, x_test, y_train, y_test, df_btest.drop(labels, axis=1), df_btest[labels])
     # # #
     # # gbdt模型
     gbdt_mdoel(x_train, x_test, y_train, y_test, df_btest.drop(labels, axis=1), df_btest[labels])
@@ -239,26 +239,26 @@ if __name__ == '__main__':
     #              numeric_features=[]
     #              )
     # # gcforest
-    gcforest(x_train, x_test, y_train, y_test,
-             df_btest.drop(labels, axis=1), df_btest[labels])
+    # gcforest(x_train, x_test, y_train, y_test,
+    #          df_btest.drop(labels, axis=1), df_btest[labels])
 
     # # gcforest2
     # gcforest2(x_train, x_test, y_train, y_test,
     #          df_btest.drop(labels, axis=1), df_btest[labels])
 
     # stacking_model
-    clf = RandomForestClassifier(n_estimators=23,
-                                 max_depth=6,
-                                 max_features=9,
-                                 random_state=5,
-                                 criterion='gini',
-                                 n_jobs=-1,
-                                 )
-    train, test, btest = stacking_models(clf, x_train, y_train, x_test,  df_btest.drop(labels, axis=1), 'rf', folds=5, label_split=None)
-
-    x_train = pd.concat([x_train, pd.DataFrame(train, columns=["stacking_0", "stacking_1"])], axis=1)
-    x_test = pd.concat([x_test, pd.DataFrame(test, columns=["stacking_0", "stacking_1"])], axis=1)
-    x_btest = pd.concat([df_btest.drop(labels, axis=1), pd.DataFrame(btest, columns=["stacking_0", "stacking_1"])], axis=1)
-
-    lgb_model(x_train, x_test, y_train, y_test, x_btest, df_btest[labels], weight_bias=22)
-
+    # clf = RandomForestClassifier(n_estimators=23,
+    #                              max_depth=6,
+    #                              max_features=9,
+    #                              random_state=5,
+    #                              criterion='gini',
+    #                              n_jobs=-1,
+    #                              )
+    # train, test, btest = stacking_models(clf, x_train, y_train, x_test,  df_btest.drop(labels, axis=1), 'rf', folds=5, label_split=None)
+    #
+    # x_train = pd.concat([x_train, pd.DataFrame(train, columns=["stacking_0", "stacking_1"])], axis=1)
+    # x_test = pd.concat([x_test, pd.DataFrame(test, columns=["stacking_0", "stacking_1"])], axis=1)
+    # x_btest = pd.concat([df_btest.drop(labels, axis=1), pd.DataFrame(btest, columns=["stacking_0", "stacking_1"])], axis=1)
+    #
+    # lgb_model(x_train, x_test, y_train, y_test, x_btest, df_btest[labels], weight_bias=22)
+    #

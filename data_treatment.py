@@ -242,14 +242,12 @@ def data_clean2(df):
 
     df = df.astype(np.float32)
 
-
-
     # df = feature_onehot(df, label="target_is_DD_ACTIVE", features=cat_features, condition=1)
 
     df_train = df.copy()
-    df_btest = df_train.sample(n=None, frac=0.1, replace=False, weights=None,
-                               random_state=0, axis=0)
-    return df_train, df_btest
+    # df_btest = df_train.sample(n=None, frac=0.1, replace=False, weights=None,
+    #                            random_state=0, axis=0)
+    return df_train
 
 
 def feature_onehot(df, label='issucess', features=['s', 'x'], condition=1):

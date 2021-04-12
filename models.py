@@ -45,7 +45,7 @@ from sklearn.svm import LinearSVC, SVC
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import log_loss, mean_absolute_error, mean_squared_error
 from sklearn.naive_bayes import MultinomialNB, GaussianNB
-
+import joblib
 
 def adaboost_model(x_train, x_test, y_train, y_test, df_xbtest, df_ybtest):
 
@@ -72,7 +72,8 @@ def adaboost_model(x_train, x_test, y_train, y_test, df_xbtest, df_ybtest):
                         n_jobs=-1)
 
     clfs = clfs.fit(x_train, y_train.astype(int), sample_weight=sample_weigh)
-
+    z = clfs.predict_proba(x_train)
+    joblib.dump(value=clfs, filename='models/adaboost.model')
     print("================训练集================")
     evalution_model(clfs, x_train, y_train)
     print("================测试集================")
@@ -110,7 +111,7 @@ def lr_model(x_train,x_test,y_train,y_test,df_xbtest,df_ybtest):
 
     clfs = clfs.fit(x_train, y_train.astype(int), sample_weight = sample_weigh)
 
-
+    joblib.dump(value=clfs, filename='models/lr.model')
     print("================训练集================")
     evalution_model(clfs, x_train, y_train)
     print("================测试集================")
@@ -144,13 +145,8 @@ def rf_mdoel(x_train, x_test, y_train, y_test, df_xbtest, df_ybtest):
                         n_jobs=-1)
 
     clfs = clfs.fit(x_train, y_train.astype(int), sample_weight=sample_weigh)
-    b_pred = clfs.predict(df_xbtest)
-    pre = round(precision_score(df_ybtest, b_pred, pos_label=1), 2)*100
-    rec = round(recall_score(df_ybtest, b_pred, pos_label=1), 2)*100
-    model_name = "models/rf_{}_{}.m".format(int(pre), int(rec))
-    #joblib.dump(clfs, model_name)
+    joblib.dump(value=clfs, filename='models/rf.model')
     print(clfs.best_params_)
-
 
     print("================训练集================")
     evalution_model(clfs, x_train, y_train)
@@ -201,6 +197,7 @@ def gbdt_mdoel(x_train,x_test,y_train,y_test,df_xbtest,df_ybtest):
                     sample_weight=sample_weigh
                     )
     print(clfs.best_params_)
+    joblib.dump(value=clfs, filename='models/gbdt.model')
 
     b_pred = clfs.predict(df_xbtest)
     pre = round(precision_score(df_ybtest, b_pred, pos_label=1), 2) * 100
@@ -244,6 +241,7 @@ def lgb_sk_mdoel(x_train, x_test, y_train, y_test, df_xbtest, df_ybtest):
 
     clfs = clfs.fit(x_train, y_train.astype(int))
     print(clfs.best_params_)
+    joblib.dump(value=clfs, filename='models/lgb.model')
 
     print("================训练集================")
     evalution_model(clfs, x_train, y_train)
@@ -292,6 +290,7 @@ def lgb_model(x_train, x_test, y_train, y_test, df_xbtest, df_ybtest, weight_bia
                     verbose_eval=10,
                     keep_training_booster=False, callbacks=None,
                      )
+    joblib.dump(value=clfs, filename='models/lgb.model')
 
     b_pred = clfs.predict(df_xbtest)
     b_pred = np.where(b_pred>0.5 ,1 ,0 )
@@ -366,6 +365,7 @@ def xgb_model(x_train, x_test, y_train, y_test, df_xbtest, df_ybtest):
     model_name = "models/xgb_{}_{}.m".format(int(pre), int(rec))
     #joblib.dump(clfs, model_name)
     print(clfs.best_params_)
+    joblib.dump(value=clfs, filename='models/xgboost.model')
 
     print("================训练集================")
     evalution_model(clfs, x_train, y_train)
@@ -420,6 +420,7 @@ def cat_boost_model(x_train,x_test,y_train,y_test,df_xbtest,df_ybtest,cat_featur
                     cat_features=cat_features,
                     verbose=None)
     print(clfs.best_params_)
+    joblib.dump(value=clfs, filename='models/catboost.model')
     # print(clfs.best_params_)
     b_pred = clfs.predict(df_xbtest)
     pre = round(precision_score(df_ybtest, b_pred, pos_label=1), 2) * 100
@@ -527,7 +528,7 @@ import operator
 def major_vote_model(x_train, x_test, y_train, y_test, df_btest, model_weight=[],boundary=0.4):
     print("========majorvote=====")
     cout = Counter(y_train)
-    tt = cout[0] / cout[1]  - 20
+    tt = cout[0] / cout[1] - 20
     sample_weigh = np.where(y_train == 0, 1, tt)
     clf1=RandomForestClassifier(n_estimators=20, max_depth=10, max_features=11, random_state=5,criterion='gini'
                                 ,class_weight={1:3.2000000000000002})
